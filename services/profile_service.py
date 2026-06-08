@@ -1,12 +1,4 @@
 from utils.json_handler import load_json, save_json
-<<<<<<< HEAD
-from structures.stack_queue import Stack
-# from models.user import User 
-
-USER_FILE = "data/users.json"
-BOOKING_FILE = "data/bookings.json"
-FLIGHT_FILE = "data/flights.json"
-=======
 
 USER_FILE = "data/users.json"
 BOOKING_FILE = "data/bookings.json"

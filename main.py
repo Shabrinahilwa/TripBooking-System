@@ -2,12 +2,14 @@ from services.auth_service import AuthService
 from services.profile_service import ProfileService
 from services.travel_service import TravelService
 
-
+#enu khusus profil pengguna
 def profile_menu(user):
     profile = ProfileService(user)
-    travel = TravelService(user)
+
     while True:
-        print("\n=== PROFILE CENTER ===")
+        print("\n" + "=" * 40)
+        print("          👤 PROFILE CENTER")
+        print("=" * 40)
         print("1. Lihat Profil")
         print("2. Lihat Saldo")
         print("3. Isi Saldo")
@@ -32,44 +34,42 @@ def profile_menu(user):
             if tambah == "y":
                 profile.tambah_wishlist()
                 continue
-            print("baiklah..")
+            print("Baiklah..")
 
         elif pilih == "5":
-            print("pilihan lihat riwayat booking")
-            print("1. seluruhnya")
-            print("2. yang barusan")
-            pilihan_riwayat = input("pilih : ")
-            if pilihan_riwayat == "1":
-                profile.lihat_riwayat_booking()
-            elif pilihan_riwayat == "2":
-                travel.lihat_riwayat_booking()
+            profile.lihat_riwayat_booking()
+            
+                
 
             undo = input("\n Mau undo book terakhir?? (y/n)").lower()
 
             if undo == "y" :
                 profile.undo_booking_terakhir()
                 continue
-            print("baiklahh..")
-
+            print("Baiklahh..")
+        
         elif pilih == "0":
             break
+        
 
-
+#Objek layanan perjalanan
 def travel_menu(user):
     travel = TravelService(user)
 
     while True:
-        print("\n=== TRAVEL CENTER ===")
+        print("\n" + "=" * 40)
+        print("          ✈️  TRAVEL CENTER")
+        print("=" * 40)
         print("1. Rekomendasi Destinasi")
         print("2. Destinasi Populer")
         print("3. Lihat Penerbangan")
         print("4. Booking Penerbangan")
-        print("5. menu search")
-
+        print("5. Menu search")
         print("0. Kembali")
 
-        pilih = input("Pilih : ")
+        print("-" * 40)
 
+        pilih = input("Pilih Menu : ")
         if pilih == "1":
             travel.rekomendasi_destinasi()
 
@@ -77,10 +77,10 @@ def travel_menu(user):
             travel.destinasi_populer()
 
         elif pilih == "3":
-            print("pilih metode lihat penerbangannya")
-            print("1. lihat seluruh penerbangan")
-            print("2. lihat rute ke kota tertentu")
-            print("3. lihat penerbangan sesuai budget")
+            print("Pilih metode lihat penerbangannya")
+            print("1. Lihat seluruh penerbangan")
+            print("2. Lihat rute ke kota tertentu")
+            print("3. Lihat penerbangan sesuai budget")
 
             pilihan = input("pilihan : ")
             if pilihan == "1" :
@@ -100,16 +100,20 @@ def travel_menu(user):
             break
 
 
+
 def main():
     auth = AuthService()
 
     while True:
-        print("\n=== AEROBOOK ===")
+        print("\n" + "=" * 40)
+        print("        ✈️  TRIPBOOKING SYSTEM")
+        print("=" * 40)
         print("1. Register")
         print("2. Login")
         print("0. Keluar")
+        print("-" * 40)
 
-        pilih = input("Pilih : ")
+        pilih = input("Pilih Menu : ")
 
         if pilih == "1":
             auth.register()
@@ -119,12 +123,15 @@ def main():
 
             if user:
                 while True:
-                    print("\n=== MENU USER ===")
+                    print("\n" + "=" * 40)
+                    print("            🏠 DASHBOARD")
+                    print("=" * 40)
                     print("1. Profile Center")
                     print("2. Travel Center")
                     print("3. Logout")
+                    print("-" * 40)
 
-                    menu = input("Pilih : ")
+                    menu = input("Pilih Menu : ")
 
                     if menu == "1":
                         profile_menu(user)
@@ -135,8 +142,9 @@ def main():
                     elif menu == "0":
                         break
 
-        elif pilih == "3":
+        elif pilih == "0":
             print("Terima kasih.")
             break
+
 
 main()
